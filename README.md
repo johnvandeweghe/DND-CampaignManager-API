@@ -13,7 +13,7 @@ An api for a Compain Manager for Dungeons and Dragons DMs
     * PCs (basics)
     * Hooks
     * Temporary notes (for later filing)
-* Links between above
+* Links between above (playes belong to factions, live in towns, etc)
 * Ability to generate quick Items/NPCs/Shops
 * A quick search that searches everything
 
@@ -26,6 +26,7 @@ All other endpoints are sub-entry. But this endpoint gets everything as an entry
 #### Available Methods
 
 Without element: GET
+
 With element: GET, PATCH, DELETE
 
 #### Fields
@@ -34,18 +35,43 @@ With element: GET, PATCH, DELETE
 * name
 * appearance
 * notes
-* type (one of pc, npc, etc)
+* related_entries
+* type (one of player_character, character, location, faction, etc)
+
+### Characters
+Represents an npc, but is also a base for the PC endpoint
+
+#### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+#### Fields (Inherited from entries)
+* name
+* appearance
+* notes
+* related_entries
+
+#### Fields
+* type (one of player_character or character)
+* max_hit_points
+* constitution
+* strength
+* dexterity
+* intelligence
+* wisdom
+* charisma
 
 ### PCs
 
 #### Available Methods
 
 Without element: GET, POST
+
 With element: GET, PATCH, DELETE
 
-#### Fields
-
-* player_name
+#### Fields (Inherited from Characters)
 * name
 * appearance
 * notes
@@ -57,9 +83,27 @@ With element: GET, PATCH, DELETE
 * wisdom
 * charisma
 
-### NPCs
+#### Fields
+* player_name
+TODO: Proficiencies?
 
 ### Items
+
+#### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+#### Fields (Inherited from entries)
+* name
+* appearance
+* notes
+
+#### Fields
+* low_value
+* fair_value
+* high_value
 
 ### Locations
 
