@@ -62,6 +62,9 @@ With element: GET, PATCH, DELETE
 * intelligence
 * wisdom
 * charisma
+* race
+* gender
+* alignment
 
 ### PCs
 
@@ -75,16 +78,21 @@ With element: GET, PATCH, DELETE
 * name
 * appearance
 * notes
-* max_hit_points
+* max_hit_point
 * constitution
 * strength
 * dexterity
 * intelligence
 * wisdom
 * charisma
+* race
+* gender
+* alignment
 
 #### Fields
 * player_name
+* classes (a list of classes with the level of each)
+
 TODO: Proficiencies?
 
 ### Items
@@ -104,11 +112,73 @@ With element: GET, PATCH, DELETE
 * low_value
 * fair_value
 * high_value
+* effects
 
 ### Locations
 
+#### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+#### Fields (Inherited from entries)
+* name
+* appearance
+* notes
+
+#### Fields
+N/A
+
 ### Factions
+
+#### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+#### Fields (Inherited from entries)
+* name
+* appearance
+* notes
+
+#### Fields
+* purpose
 
 ### Monsters
 
+#### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+#### Fields (Inherited from entries)
+* name
+* appearance
+* notes
+
+#### Fields
+* max_hit_points
+* constitution
+* strength
+* dexterity
+* intelligence
+* wisdom
+* charisma
+* type
+* alignment
+* features (ex: pack tactics)
+* attacks
+
 ### Notes
+
+#### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+#### Fields
+* notes
