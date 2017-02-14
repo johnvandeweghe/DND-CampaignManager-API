@@ -17,4 +17,4 @@ An api for a Compain Manager for Dungeons and Dragons DMs
 * Ability to generate quick Items/NPCs/Shops
 * A quick search that searches everything
 
-## [Endpoints](DND-CampaignManager-API/docs/API_ENDPOINTS.md)
+## [Endpoints](docs/API_ENDPOINTS.md)
