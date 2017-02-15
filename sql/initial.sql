@@ -41,3 +41,17 @@ CREATE TABLE player_characters (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE items (
+    id INT(11),
+    entry_id INT(11),
+    low_value varchar(32),
+    fair_value varchar(32),
+    high_value varchar(32),
+    effects text,
+
+    UNIQUE KEY (entry_id),
+    FOREIGN KEY (entry_id)
+        REFERENCES entries (id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (id)
+)
