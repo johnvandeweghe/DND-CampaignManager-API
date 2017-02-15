@@ -1,5 +1,4 @@
 create database dnd;
-
 use dnd;
 
 CREATE TABLE entries (
@@ -11,7 +10,7 @@ CREATE TABLE entries (
 );
 
 CREATE TABLE characters (
-    id INT(11),
+    id INT(11) AUTO_INCREMENT,
     entry_id INT(11),
     max_hit_points INT(11),
     constitution INT(11),
@@ -31,7 +30,7 @@ CREATE TABLE characters (
 );
 
 CREATE TABLE player_characters (
-    id INT(11),
+    id INT(11) AUTO_INCREMENT,
     character_id INT(11),
     player_name VARCHAR(64),
     UNIQUE KEY (character_id),
@@ -42,7 +41,7 @@ CREATE TABLE player_characters (
 );
 
 CREATE TABLE items (
-    id INT(11),
+    id INT(11) AUTO_INCREMENT,
     entry_id INT(11),
     low_value VARCHAR(32),
     fair_value VARCHAR(32),
@@ -56,7 +55,7 @@ CREATE TABLE items (
 );
 
 CREATE TABLE locations (
-    id INT(11),
+    id INT(11) AUTO_INCREMENT,
     entry_id INT(11),
     UNIQUE KEY (entry_id),
     FOREIGN KEY (entry_id)
@@ -65,8 +64,19 @@ CREATE TABLE locations (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE factions (
+    id INT(11) AUTO_INCREMENT,
+    entry_id INT(11),
+    purpose TEXT,
+    UNIQUE KEY (entry_id),
+    FOREIGN KEY (entry_id)
+        REFERENCES entries (id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE monsters (
-    id INT(11),
+    id INT(11) AUTO_INCREMENT,
     entry_id INT(11),
     max_hit_points INT(11),
     constitution INT(11),
@@ -83,5 +93,12 @@ CREATE TABLE monsters (
     FOREIGN KEY (entry_id)
         REFERENCES entries (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE notes (
+    id INT(11) AUTO_INCREMENT,
+    notes TEXT,
+    status ENUM('pending', 'synthesized', 'declined'),
     PRIMARY KEY (id)
 );
