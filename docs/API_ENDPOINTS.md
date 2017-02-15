@@ -163,3 +163,4 @@ With element: GET, PATCH, DELETE
 
 #### Fields
 * notes
+* status (one of pending, synthesized, or declined)
