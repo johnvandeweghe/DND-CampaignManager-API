@@ -19,8 +19,8 @@ With element: GET, PATCH, DELETE
 * related_entries
 * type (one of player_character, character, location, faction, etc)
 
-## Characters
-Represents an npc, but is also a base for the PC endpoint
+## Creatures
+A stat-carrying thing
 
 ### Available Methods
 
@@ -35,17 +35,23 @@ With element: GET, PATCH, DELETE
 * related_entries
 
 ### Fields
-* type (one of player_character or character)
+* type (One of: Aberation, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, Or Undead)
 * max_hit_points
+* avarage_max_hit_points
 * constitution
 * strength
 * dexterity
 * intelligence
 * wisdom
 * charisma
-* race
-* gender
+* proficiency_bonus
 * alignment
+* base_speed
+* burrow_speed
+* climb_speed
+* flow_speed
+* swim_speed
+* languages
 
 ## PCs
 
