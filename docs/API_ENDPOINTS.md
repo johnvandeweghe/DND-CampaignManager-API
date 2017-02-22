@@ -52,8 +52,36 @@ With element: GET, PATCH, DELETE
 * flow_speed
 * swim_speed
 * languages
+* senses
+* constitution_saving_throw_modifier (0, 1, 2)
+* strength_saving_throw_modifier
+* dexterity_saving_throw_modifier
+* intelligence_saving_throw_modifier
+* wisdom_saving_throw_modifier
+* charisma_saving_throw_modifier
+* acrobatics_proficiency_modifier
+* arcana_proficiency_modifier
+* athletics_proficiency_modifier
+* deception_proficiency_modifier
+* history_proficiency_modifier
+* insight_proficiency_modifier
+* intimidation_proficiency_modifier
+* investigation_proficiency_modifier
+* medicine_proficiency_modifier
+* nature_proficiency_modifier
+* perception_proficiency_modifier
+* performance_proficiency_modifier
+* persuasion_proficiency_modifier
+* religion_proficiency_modifier
+* slight_of_hand_proficiency_modifier
+* stealth_proficiency_modifier
+* survival_proficiency_modifier
+* damage_type_modifiers (0, 0.5, 1, 2)
+* condition_immunities
+* special_traits (not class features, such as spellcasting, or multiattack)
+* class_levels
 
-## PCs
+## Players
 
 ### Available Methods
 
@@ -61,26 +89,9 @@ Without element: GET, POST
 
 With element: GET, PATCH, DELETE
 
-### Fields (Inherited from Characters)
-* name
-* appearance
-* notes
-* max_hit_point
-* constitution
-* strength
-* dexterity
-* intelligence
-* wisdom
-* charisma
-* race
-* gender
-* alignment
-
 ### Fields
 * player_name
-* classes (a list of classes with the level of each)
-
-TODO: Proficiencies?
+* characters
 
 ## Items
 
@@ -100,6 +111,7 @@ With element: GET, PATCH, DELETE
 * fair_value
 * high_value
 * effects
+TODO: Weapons (with attack/damage), and Armor (with AC) OR Equipment
 
 ## Locations
 
