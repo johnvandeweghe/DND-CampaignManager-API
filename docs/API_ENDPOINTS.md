@@ -17,7 +17,7 @@ With element: GET, PATCH, DELETE
 * appearance
 * notes
 * related_entries
-    * A list of related entries, includes a relation type, the type of the related thing, and the related thing's entry id
+    * A list of [related entries](API_RELATIONS.md)
 * type (one of creature, player, location, faction, etc)
 
 ## Creatures
