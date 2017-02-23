@@ -17,7 +17,8 @@ With element: GET, PATCH, DELETE
 * appearance
 * notes
 * related_entries
-* type (one of player_character, character, location, faction, etc)
+    * A list of related entries, includes a relation type, the type of the related thing, and the related thing's entry id
+* type (one of creature, player, location, faction, etc)
 
 ## Creatures
 A stat-carrying thing
@@ -83,18 +84,6 @@ With element: GET, PATCH, DELETE
 * special_traits (not class features, such as spellcasting, or multiattack)
 * class_levels
 
-## Players
-
-### Available Methods
-
-Without element: GET, POST
-
-With element: GET, PATCH, DELETE
-
-### Fields
-* player_name
-* characters
-
 ## Items
 
 ### Available Methods
@@ -147,14 +136,27 @@ With element: GET, PATCH, DELETE
 #### Fields
 * purpose
 
-### Notes
+## Players
 
-#### Available Methods
+### Available Methods
 
 Without element: GET, POST
 
 With element: GET, PATCH, DELETE
 
-#### Fields
+### Fields
+* player_name
+* characters
+
+
+## Notes
+
+### Available Methods
+
+Without element: GET, POST
+
+With element: GET, PATCH, DELETE
+
+### Fields
 * notes
 * status (one of pending, synthesized, or declined)
