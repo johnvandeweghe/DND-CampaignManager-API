@@ -36,8 +36,10 @@ With element: GET, PATCH, DELETE
 
 ### Fields
 * type (One of: Aberation, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, Or Undead)
+* race
+* gender
 * max_hit_points
-* avarage_max_hit_points
+* avarage_max_hit_points (ex: 4d8)
 * constitution
 * strength
 * dexterity
@@ -144,32 +146,6 @@ With element: GET, PATCH, DELETE
 
 #### Fields
 * purpose
-
-### Monsters
-
-#### Available Methods
-
-Without element: GET, POST
-
-With element: GET, PATCH, DELETE
-
-#### Fields (Inherited from entries)
-* name
-* appearance
-* notes
-
-#### Fields
-* max_hit_points
-* constitution
-* strength
-* dexterity
-* intelligence
-* wisdom
-* charisma
-* type
-* alignment
-* features (ex: pack tactics)
-* attacks
 
 ### Notes
 
