@@ -18,3 +18,5 @@ An api for a Compain Manager for Dungeons and Dragons DMs
 * A quick search that searches everything
 
 ## [Endpoints](docs/API_ENDPOINTS.md)
+
+## [Entry Relationships](docs/API_RELATIONS.md)
