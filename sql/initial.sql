@@ -17,19 +17,19 @@ CREATE TABLE alignments (
 insert into alignments (alignment) values ('lawful-good'), ('lawful-neutral'), ('lawful-evil'), ('neutral-good'), ('neutral-neutral'), ('neutral-evil'), ('chaotic-good'), ('chaotic-neutral'), ('chaotic-evil');
 
 CREATE TABLE creature_types (
-	creature_type VARCHAR(32),
-    primary key (creature_type)
+    creature_type VARCHAR(32),
+    PRIMARY KEY (creature_type)
 );
 
 insert into creature_types (creature_type) values ('Aberation'), ('Beast'), ('Celestial'), ('Construct'), ('Dragon'), ('Elemental'), ('Fey'), ('Fiend'), ('Giant'), ('Humanoid'), ('Monstrosity'), ('Ooze'), ('Plant'), ('Undead');
 
 CREATE TABLE creatures (
     entry_id INT(11),
-    `type` varchar(32),
+    `type` VARCHAR(32),
     race VARCHAR(32),
     gender VARCHAR(16),
     max_hit_points INT(11),
-    average_max_hit_points varchar(32),
+    average_max_hit_points VARCHAR(32),
     constitution INT(11),
     strength INT(11),
     dexterity INT(11),
@@ -37,40 +37,40 @@ CREATE TABLE creatures (
     wisdom INT(11),
     charisma INT(11),
     alignment VARCHAR(32),
-    proficiency_bonus int(11) default 2,
-    size varchar(16) DEFAULT "medium",
-	base_speed int(11) DEFAULT 30,
-	burrow_speed int(11) DEFAULT 0,
-	climb_speed int(11) DEFAULT 15,
-	fly_speed int(11) DEFAULT 0,
-	swim_speed int(11) DEFAULT 15,
-	languages varchar(128) DEFAULT '',
-	senses varchar(128) DEFAULT '',
-	constitution_saving_throw_modifier int(11) DEFAULT 0,
-	strength_saving_throw_modifier int(11) DEFAULT 0,
-	dexterity_saving_throw_modifier int(11) DEFAULT 0,
-	intelligence_saving_throw_modifier int(11) DEFAULT 0,
-	wisdom_saving_throw_modifier int(11) DEFAULT 0,
-	charisma_saving_throw_modifier int(11) DEFAULT 0,
-	acrobatics_proficiency_modifier int(11) DEFAULT 0,
-	arcana_proficiency_modifier int(11) DEFAULT 0,
-	athletics_proficiency_modifier int(11) DEFAULT 0,
-	deception_proficiency_modifier int(11) DEFAULT 0,
-	history_proficiency_modifier int(11) DEFAULT 0,
-	insight_proficiency_modifier int(11) DEFAULT 0,
-	intimidation_proficiency_modifier int(11) DEFAULT 0,
-	investigation_proficiency_modifier int(11) DEFAULT 0,
-	medicine_proficiency_modifier int(11) DEFAULT 0,
-	nature_proficiency_modifier int(11) DEFAULT 0,
-	perception_proficiency_modifier int(11) DEFAULT 0,
-	performance_proficiency_modifier int(11) DEFAULT 0,
-	persuasion_proficiency_modifier int(11) DEFAULT 0,
-	religion_proficiency_modifier int(11) DEFAULT 0,
-	slight_of_hand_proficiency_modifier int(11) DEFAULT 0,
-	stealth_proficiency_modifier int(11) DEFAULT 0,
-	survival_proficiency_modifier int(11) DEFAULT 0,
-	special_traits text DEFAULT '',
-	class_levels varchar(128) default '',
+    proficiency_bonus INT(11) DEFAULT 2,
+    size VARCHAR(16) DEFAULT 'medium',
+    base_speed INT(11) DEFAULT 30,
+    burrow_speed INT(11) DEFAULT 0,
+    climb_speed INT(11) DEFAULT 15,
+    fly_speed INT(11) DEFAULT 0,
+    swim_speed INT(11) DEFAULT 15,
+    languages VARCHAR(128) DEFAULT '',
+    senses VARCHAR(128) DEFAULT '',
+    constitution_saving_throw_modifier INT(11) DEFAULT 0,
+    strength_saving_throw_modifier INT(11) DEFAULT 0,
+    dexterity_saving_throw_modifier INT(11) DEFAULT 0,
+    intelligence_saving_throw_modifier INT(11) DEFAULT 0,
+    wisdom_saving_throw_modifier INT(11) DEFAULT 0,
+    charisma_saving_throw_modifier INT(11) DEFAULT 0,
+    acrobatics_proficiency_modifier INT(11) DEFAULT 0,
+    arcana_proficiency_modifier INT(11) DEFAULT 0,
+    athletics_proficiency_modifier INT(11) DEFAULT 0,
+    deception_proficiency_modifier INT(11) DEFAULT 0,
+    history_proficiency_modifier INT(11) DEFAULT 0,
+    insight_proficiency_modifier INT(11) DEFAULT 0,
+    intimidation_proficiency_modifier INT(11) DEFAULT 0,
+    investigation_proficiency_modifier INT(11) DEFAULT 0,
+    medicine_proficiency_modifier INT(11) DEFAULT 0,
+    nature_proficiency_modifier INT(11) DEFAULT 0,
+    perception_proficiency_modifier INT(11) DEFAULT 0,
+    performance_proficiency_modifier INT(11) DEFAULT 0,
+    persuasion_proficiency_modifier INT(11) DEFAULT 0,
+    religion_proficiency_modifier INT(11) DEFAULT 0,
+    slight_of_hand_proficiency_modifier INT(11) DEFAULT 0,
+    stealth_proficiency_modifier INT(11) DEFAULT 0,
+    survival_proficiency_modifier INT(11) DEFAULT 0,
+    special_traits TEXT DEFAULT '',
+    class_levels VARCHAR(128) DEFAULT '',
     FOREIGN KEY (entry_id)
         REFERENCES entries (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
@@ -84,38 +84,38 @@ CREATE TABLE creatures (
 );
     
 CREATE TABLE damage_types (
-	damage_type varchar(32),
-    primary key (damage_type)
+    damage_type VARCHAR(32),
+    PRIMARY KEY (damage_type)
 );
 
 CREATE TABLE conditions (
-	`condition` varchar(32),
-    primary key (`condition`)
+    `condition` VARCHAR(32),
+    PRIMARY KEY (`condition`)
 );
 
 CREATE TABLE creature_damage_type_modifiers (
-	creature_entry_id int(11),
-    damage_type varchar(32),
-    modifier double DEFAULT 1,
+    creature_entry_id INT(11),
+    damage_type VARCHAR(32),
+    modifier DOUBLE DEFAULT 1,
     FOREIGN KEY (creature_entry_id)
         REFERENCES creatures (entry_id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (damage_type)
         REFERENCES damage_types (damage_type)
         ON UPDATE CASCADE ON DELETE CASCADE,
-    primary key (creature_entry_id, damage_type)
+    PRIMARY KEY (creature_entry_id , damage_type)
 );
 
 CREATE TABLE creature_condition_immunities (
-	creature_entry_id int(11),
-    `condition` varchar(32),
+    creature_entry_id INT(11),
+    `condition` VARCHAR(32),
     FOREIGN KEY (creature_entry_id)
         REFERENCES creatures (entry_id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`condition`)
         REFERENCES creature_damage_type_modifiers (`condition`)
         ON UPDATE CASCADE ON DELETE CASCADE,
-    primary key (creature_entry_id, `condition`)
+    PRIMARY KEY (creature_entry_id , `condition`)
 );
 
 
@@ -164,18 +164,18 @@ CREATE TABLE notes (
 -- Entry Relations
 
 CREATE TABLE creature_creature_relation_types (
-	id int(11) auto_increment,
-	`a_to_b_type` varchar(32),
-	`b_to_a_type` varchar(32),
-    unique key (`a_to_b_type`),
-    unique key (`b_to_a_type`),
+    id INT(11) AUTO_INCREMENT,
+    `a_to_b_type` VARCHAR(32),
+    `b_to_a_type` VARCHAR(32),
+    UNIQUE KEY (`a_to_b_type`),
+    UNIQUE KEY (`b_to_a_type`),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE creature_creature_relations (
-	creature_a int(11),
-    creature_b int(11),
-    relation_type_id int(11),
+    creature_a INT(11),
+    creature_b INT(11),
+    relation_type_id INT(11),
     FOREIGN KEY (creature_a)
         REFERENCES creatures (entry_id)
         ON UPDATE CASCADE ON DELETE CASCADE,
@@ -185,5 +185,5 @@ CREATE TABLE creature_creature_relations (
     FOREIGN KEY (relation_type_id)
         REFERENCES creature_creature_relation_types (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
-    Primary key (creature_a, creature_b, relation_type_id)
+    PRIMARY KEY (creature_a , creature_b , relation_type_id)
 )
