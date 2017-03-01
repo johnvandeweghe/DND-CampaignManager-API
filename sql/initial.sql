@@ -109,7 +109,7 @@ CREATE TABLE creature_damage_type_modifiers (
 CREATE TABLE creature_condition_immunities (
 	creature_entry_id int(11),
     `condition` varchar(32),
-    FOREIGN KEY (creature_entry_i
+    FOREIGN KEY (creature_entry_id)
         REFERENCES creatures (entry_id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`condition`)
@@ -160,3 +160,30 @@ CREATE TABLE notes (
     status ENUM('pending', 'synthesized', 'declined'),
     PRIMARY KEY (id)
 );
+
+-- Entry Relations
+
+CREATE TABLE creature_creature_relation_types (
+	id int(11) auto_increment,
+	`a_to_b_type` varchar(32),
+	`b_to_a_type` varchar(32),
+    unique key (`a_to_b_type`),
+    unique key (`b_to_a_type`),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE creature_creature_relations (
+	creature_a int(11),
+    creature_b int(11),
+    relation_type_id int(11),
+    FOREIGN KEY (creature_a)
+        REFERENCES creatures (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (creature_b)
+        REFERENCES creatures (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (relation_type_id)
+        REFERENCES creature_creature_relation_types (id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    Primary key (creature_a, creature_b, relation_type_id)
+)
