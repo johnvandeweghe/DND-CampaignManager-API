@@ -49,6 +49,7 @@ With element: GET, PATCH, DELETE
 * charisma
 * proficiency_bonus
 * alignment
+* size
 * base_speed
 * burrow_speed
 * climb_speed
