@@ -52,7 +52,7 @@ With element: GET, PATCH, DELETE
 * base_speed
 * burrow_speed
 * climb_speed
-* flow_speed
+* fly_speed
 * swim_speed
 * languages
 * senses
