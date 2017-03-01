@@ -23,43 +23,6 @@ CREATE TABLE creature_types (
 
 insert into creature_types (creature_type) values ('Aberation'), ('Beast'), ('Celestial'), ('Construct'), ('Dragon'), ('Elemental'), ('Fey'), ('Fiend'), ('Giant'), ('Humanoid'), ('Monstrosity'), ('Ooze'), ('Plant'), ('Undead');
 
-/*
-proficiency_bonus
-base_speed
-burrow_speed
-climb_speed
-flow_speed
-swim_speed
-languages
-senses
-constitution_saving_throw_modifier (0, 1, 2)
-strength_saving_throw_modifier
-dexterity_saving_throw_modifier
-intelligence_saving_throw_modifier
-wisdom_saving_throw_modifier
-charisma_saving_throw_modifier
-acrobatics_proficiency_modifier
-arcana_proficiency_modifier
-athletics_proficiency_modifier
-deception_proficiency_modifier
-history_proficiency_modifier
-insight_proficiency_modifier
-intimidation_proficiency_modifier
-investigation_proficiency_modifier
-medicine_proficiency_modifier
-nature_proficiency_modifier
-perception_proficiency_modifier
-performance_proficiency_modifier
-persuasion_proficiency_modifier
-religion_proficiency_modifier
-slight_of_hand_proficiency_modifier
-stealth_proficiency_modifier
-survival_proficiency_modifier
-damage_type_modifiers (0, 0.5, 1, 2)
-condition_immunities
-special_traits (not class features, such as spellcasting, or multiattack)
-class_levels
-*/
 CREATE TABLE creatures (
     entry_id INT(11),
     `type` varchar(32),
@@ -74,6 +37,40 @@ CREATE TABLE creatures (
     wisdom INT(11),
     charisma INT(11),
     alignment VARCHAR(32),
+    proficiency_bonus int(11) default 2,
+    size varchar(16) DEFAULT "medium",
+	base_speed int(11) DEFAULT 30,
+	burrow_speed int(11) DEFAULT 0,
+	climb_speed int(11) DEFAULT 15,
+	fly_speed int(11) DEFAULT 0,
+	swim_speed int(11) DEFAULT 15,
+	languages varchar(128) DEFAULT '',
+	senses varchar(128) DEFAULT '',
+	constitution_saving_throw_modifier int(11) DEFAULT 0,
+	strength_saving_throw_modifier int(11) DEFAULT 0,
+	dexterity_saving_throw_modifier int(11) DEFAULT 0,
+	intelligence_saving_throw_modifier int(11) DEFAULT 0,
+	wisdom_saving_throw_modifier int(11) DEFAULT 0,
+	charisma_saving_throw_modifier int(11) DEFAULT 0,
+	acrobatics_proficiency_modifier int(11) DEFAULT 0,
+	arcana_proficiency_modifier int(11) DEFAULT 0,
+	athletics_proficiency_modifier int(11) DEFAULT 0,
+	deception_proficiency_modifier int(11) DEFAULT 0,
+	history_proficiency_modifier int(11) DEFAULT 0,
+	insight_proficiency_modifier int(11) DEFAULT 0,
+	intimidation_proficiency_modifier int(11) DEFAULT 0,
+	investigation_proficiency_modifier int(11) DEFAULT 0,
+	medicine_proficiency_modifier int(11) DEFAULT 0,
+	nature_proficiency_modifier int(11) DEFAULT 0,
+	perception_proficiency_modifier int(11) DEFAULT 0,
+	performance_proficiency_modifier int(11) DEFAULT 0,
+	persuasion_proficiency_modifier int(11) DEFAULT 0,
+	religion_proficiency_modifier int(11) DEFAULT 0,
+	slight_of_hand_proficiency_modifier int(11) DEFAULT 0,
+	stealth_proficiency_modifier int(11) DEFAULT 0,
+	survival_proficiency_modifier int(11) DEFAULT 0,
+	special_traits text DEFAULT '',
+	class_levels varchar(128) default '',
     FOREIGN KEY (entry_id)
         REFERENCES entries (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
@@ -85,6 +82,42 @@ CREATE TABLE creatures (
         ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (entry_id)
 );
+    
+CREATE TABLE damage_types (
+	damage_type varchar(32),
+    primary key (damage_type)
+);
+
+CREATE TABLE conditions (
+	`condition` varchar(32),
+    primary key (`condition`)
+);
+
+CREATE TABLE creature_damage_type_modifiers (
+	creature_entry_id int(11),
+    damage_type varchar(32),
+    modifier double DEFAULT 1,
+    FOREIGN KEY (creature_entry_id)
+        REFERENCES creatures (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (damage_type)
+        REFERENCES damage_types (damage_type)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    primary key (creature_entry_id, damage_type)
+);
+
+CREATE TABLE creature_condition_immunities (
+	creature_entry_id int(11),
+    `condition` varchar(32),
+    FOREIGN KEY (creature_entry_i
+        REFERENCES creatures (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (`condition`)
+        REFERENCES creature_damage_type_modifiers (`condition`)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    primary key (creature_entry_id, `condition`)
+);
+
 
 CREATE TABLE players (
     id INT(11) AUTO_INCREMENT,
@@ -127,5 +160,3 @@ CREATE TABLE notes (
     status ENUM('pending', 'synthesized', 'declined'),
     PRIMARY KEY (id)
 );
-
---
