@@ -22,7 +22,7 @@ Special relationships may have additional information as well
 
 | C to F  | F to C         | Additional Fields |
 |---------|----------------|-------------------|
-|member_of|member          | position          |
+|member_of|member          | title             |
 |TODO     |TODO            |                   |
 
 ## Location to Location
