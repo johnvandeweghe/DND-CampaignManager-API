@@ -1,5 +1,5 @@
-create database dnd;
-use dnd;
+create database dnd_cm;
+use dnd_cm;
 
 CREATE TABLE entries (
     id INT(11) AUTO_INCREMENT,
@@ -172,6 +172,8 @@ CREATE TABLE creature_creature_relation_types (
     PRIMARY KEY (id)
 );
 
+INSERT INTO creature_creature_relation_types (a_to_b_type, b_to_a_type) VALUES ('parent_of', 'child_of');
+
 CREATE TABLE creature_creature_relations (
     creature_a INT(11),
     creature_b INT(11),
@@ -186,4 +188,90 @@ CREATE TABLE creature_creature_relations (
         REFERENCES creature_creature_relation_types (id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (creature_a , creature_b , relation_type_id)
-)
+);
+
+CREATE TABLE creature_item_relation_types (
+    id INT(11) AUTO_INCREMENT,
+    creature_to_item_type VARCHAR(32),
+    item_to_creature_type VARCHAR(32),
+    UNIQUE KEY (`creature_to_item_type`),
+    UNIQUE KEY (`item_to_creature_type`),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO creature_item_relation_types (creature_to_item_type, item_to_creature_type)
+VALUES ('has', 'in_possession_of');
+
+CREATE TABLE creature_item_relations (
+    creature_id INT(11),
+    item_id INT(11),
+    relation_type_id INT(11),
+    quantity DOUBLE NULL,
+    FOREIGN KEY (creature_id)
+        REFERENCES creatures (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (item_id)
+        REFERENCES items (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (relation_type_id)
+        REFERENCES creature_item_relation_types (id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (creature_id , item_id , relation_type_id)
+);
+
+CREATE TABLE creature_faction_relation_types (
+    id INT(11) AUTO_INCREMENT,
+    creature_to_faction_type VARCHAR(32),
+    faction_to_creature_type VARCHAR(32),
+    UNIQUE KEY (`creature_to_faction_type`),
+    UNIQUE KEY (`faction_to_creature_type`),
+    PRIMARY KEY (id)
+);
+    
+INSERT INTO creature_faction_relation_types (creature_to_faction_type, faction_to_creature_type)
+VALUES ('member_of', 'member');
+
+CREATE TABLE creature_faction_relations (
+    creature_id INT(11),
+    faction_id INT(11),
+    relation_type_id INT(11),
+    title VARCHAR(32) NULL,
+    FOREIGN KEY (creature_id)
+        REFERENCES creatures (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (faction_id)
+        REFERENCES factions (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (relation_type_id)
+        REFERENCES creature_faction_relation_types (id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (creature_id , faction_id , relation_type_id)
+);
+
+CREATE TABLE location_location_relation_types (
+    id INT(11) AUTO_INCREMENT,
+    `a_to_b_type` VARCHAR(32),
+    `b_to_a_type` VARCHAR(32),
+    UNIQUE KEY (`a_to_b_type`),
+    UNIQUE KEY (`b_to_a_type`),
+    PRIMARY KEY (id)
+);
+    
+INSERT INTO location_location_relation_types (a_to_b_type, b_to_a_type)
+VALUES ('parent_of', 'child_of');
+
+CREATE TABLE location_location_relations (
+    location_a INT(11),
+    location_b INT(11),
+    relation_type_id INT(11),
+    FOREIGN KEY (location_a)
+        REFERENCES locations (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (location_b)
+        REFERENCES locations (entry_id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (relation_type_id)
+        REFERENCES location_location_relation_types (id)
+        ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (location_a , location_b , relation_type_id)
+);
