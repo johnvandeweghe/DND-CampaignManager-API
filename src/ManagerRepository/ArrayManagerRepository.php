@@ -1,11 +1,19 @@
 <?php
-namespace DNDCampaignManagerAPI;
+namespace DNDCampaignManagerAPI\ManagerRepository;
 
 use Doctrine\Common\Persistence\AbstractManagerRegistry;
 use Doctrine\ORM\ORMException;
 
+/**
+ * A basic implementation of Doctrine\Common\Persistence\AbstractManagerRegistry that uses an associative array as a container.
+ * Class ArrayManagerRepository
+ * @package DNDCampaignManagerAPI\ManagerRepository
+ */
 class ArrayManagerRepository extends AbstractManagerRegistry
 {
+    /**
+     * @var array
+     */
     protected $container;
 
     /**
@@ -38,15 +46,28 @@ class ArrayManagerRepository extends AbstractManagerRegistry
         parent::__construct($name, $connections, $managers, $defaultConnection, $defaultManager, null);
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     */
     protected function getService($name)
     {
         return $this->container[$name];
     }
+
+    /**
+     * @param string $name
+     */
     protected function resetService($name)
     {
         $this->container[$name] = null;
     }
 
+    /**
+     * @param string $alias
+     * @return mixed
+     * @throws ORMException
+     */
     public function getAliasNamespace($alias)
     {
         foreach (array_keys($this->getManagers()) as $name) {

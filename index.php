@@ -1,6 +1,7 @@
 <?php
 require "vendor/autoload.php";
 
+use DNDCampaignManagerAPI\ManagerRepository\ConfigurationManagerRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use LunixREST\AccessControl\OneKeyAccessControl;
@@ -31,24 +32,7 @@ $responseFactory = new RegisteredResponseFactory([
     'application/json' => new JSONResponseDataSerializer()
 ]);
 
-$paths = ["src/Entities"];
-
-// the connection configuration
-$dbParams = array(
-    'driver'   => 'pdo_mysql',
-    'user'     => $configuration->getDbUser(),
-    'password' => $configuration->getDbPassword(),
-    'dbname'   => $configuration->getDbDatabase(),
-);
-
-$config = Setup::createAnnotationMetadataConfiguration($paths);
-$entityManager = EntityManager::create($dbParams, $config);
-
-$managerRepository = new \DNDCampaignManagerAPI\ArrayManagerRepository("default", [
-        "default" => $entityManager->getConnection()
-    ], [
-        "default" => $entityManager
-    ], "default", "default");
+$managerRepository = new ConfigurationManagerRepository($configuration);
 
 $endpointFactory = new \DNDCampaignManagerAPI\EndpointFactory($managerRepository, new NullLogger());
 
