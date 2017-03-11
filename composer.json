@@ -1,0 +1,26 @@
+{
+  "name": "johnvandeweghe/DND-CM-API",
+  "description": "A Dungeons and Dragons campaign manager api backend.",
+  "minimum-stability": "stable",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "John VanDeWeghe",
+      "email": "vandeweghe@lunixlabs.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "johnvandeweghe/lunixrest-basics": "^0.2",
+    "monolog/monolog": "^1",
+    "doctrine/orm": "^2.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "DNDCampaignManagerAPI\\": "src/"
+    }
+  }
+}
