@@ -1,3 +1,5 @@
+DROP DATABASE dnd_cm;
+
 create database dnd_cm;
 use dnd_cm;
 
@@ -69,7 +71,7 @@ CREATE TABLE creatures (
     slight_of_hand_proficiency_modifier INT(11) DEFAULT 0,
     stealth_proficiency_modifier INT(11) DEFAULT 0,
     survival_proficiency_modifier INT(11) DEFAULT 0,
-    special_traits TEXT DEFAULT '',
+    special_traits TEXT,
     class_levels VARCHAR(128) DEFAULT '',
     FOREIGN KEY (entry_id)
         REFERENCES entries (id)
@@ -113,7 +115,7 @@ CREATE TABLE creature_condition_immunities (
         REFERENCES creatures (entry_id)
         ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (`condition`)
-        REFERENCES creature_damage_type_modifiers (`condition`)
+        REFERENCES conditions (`condition`)
         ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY (creature_entry_id , `condition`)
 );
