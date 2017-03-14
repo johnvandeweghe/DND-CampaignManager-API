@@ -8,6 +8,7 @@ CREATE TABLE entries (
     name VARCHAR(255),
     appearance TEXT,
     notes TEXT,
+    entry_type varchar(32),
     PRIMARY KEY (id)
 );
 

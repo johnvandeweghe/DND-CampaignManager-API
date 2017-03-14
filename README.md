@@ -17,6 +17,8 @@ An api for a Compain Manager for Dungeons and Dragons DMs
 * Ability to generate quick Items/NPCs/Shops
 * A quick search that searches everything
 
+*Note: This project uses Doctrine 2 ORM, but wants to explicitly state that it's not meant to exemplify perfect conventions with Doctrine Entity implementation. The goal is merely to show that Doctrine Entities can be used with LunixREST.*
+
 ## [Endpoints](docs/API_ENDPOINTS.md)
 
 ## [Entry Relationships](docs/API_RELATIONS.md)

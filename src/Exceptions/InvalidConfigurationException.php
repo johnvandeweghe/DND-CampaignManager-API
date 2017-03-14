@@ -1,5 +1,5 @@
 <?php
-namespace DNDCampaignManagerAPI;
+namespace DNDCampaignManagerAPI\Exceptions;
 
 class InvalidConfigurationException extends \Exception
 {

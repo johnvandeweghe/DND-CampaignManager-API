@@ -21,7 +21,7 @@ class ConfigurationManagerRepository extends ArrayManagerRepository
 
     protected function buildEntityManager(Configuration $configuration)
     {
-        $paths = ["src/Entities"];
+        $paths = ["src/Entities/"];
 
         // the connection configuration
         $dbParams = array(
@@ -32,6 +32,11 @@ class ConfigurationManagerRepository extends ArrayManagerRepository
         );
 
         $config = Setup::createAnnotationMetadataConfiguration($paths);
-        return EntityManager::create($dbParams, $config);
+
+        $em = EntityManager::create($dbParams, $config);
+        $platform = $em->getConnection()->getDatabasePlatform();
+        $platform->registerDoctrineTypeMapping('enum', 'string');
+
+        return $em;
     }
 }

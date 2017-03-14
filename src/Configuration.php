@@ -1,6 +1,7 @@
 <?php
 namespace DNDCampaignManagerAPI;
 
+use DNDCampaignManagerAPI\Exceptions\InvalidConfigurationException;
 use LunixREST\Configuration\Exceptions\INIParseException;
 use LunixREST\Configuration\INIConfiguration;
 

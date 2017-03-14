@@ -2,3 +2,5 @@
 *.iml
 composer.phar
 /vendor/
+cli-config.php
+/config.ini

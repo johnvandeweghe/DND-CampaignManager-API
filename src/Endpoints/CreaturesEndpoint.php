@@ -31,7 +31,8 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
      */
     public function getAll(APIRequest $request): APIResponseData
     {
-        $allCreatures = $this->getEntityManager()->getRepository("Creatures")->findAll();
+        $allCreatures = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creatures')->findAll();
+        return new APIResponseData($allCreatures);
     }
 
     /**

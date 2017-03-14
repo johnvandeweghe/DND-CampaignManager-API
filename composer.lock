@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d10a40e59c9ee17028848fe94f8199c5",
+    "content-hash": "68b5e2b2bed8677f437660844c532756",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -673,16 +673,16 @@
         },
         {
             "name": "johnvandeweghe/lunixrest",
-            "version": "v0.8.3",
+            "version": "v0.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST.git",
-                "reference": "1cd124e257ddd56f33dfdbf3f385ce0adb5c319f"
+                "reference": "829799739c8cd39554b2d86e8e24476609c0f629"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/1cd124e257ddd56f33dfdbf3f385ce0adb5c319f",
-                "reference": "1cd124e257ddd56f33dfdbf3f385ce0adb5c319f",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/829799739c8cd39554b2d86e8e24476609c0f629",
+                "reference": "829799739c8cd39554b2d86e8e24476609c0f629",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 }
             ],
             "description": "A lightweight REST server",
-            "time": "2017-03-11T07:10:31+00:00"
+            "time": "2017-03-14T03:20:20+00:00"
         },
         {
             "name": "johnvandeweghe/lunixrest-basics",
@@ -759,16 +759,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bad29cb8d18ab0315e6c477751418a82c850d558"
+                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bad29cb8d18ab0315e6c477751418a82c850d558",
-                "reference": "bad29cb8d18ab0315e6c477751418a82c850d558",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
+                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-11-26T00:15:39+00:00"
+            "time": "2017-03-13T07:08:03+00:00"
         },
         {
             "name": "psr/cache",
@@ -2425,7 +2425,9 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1"
+        "php": "^7.1",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*"
     },
     "platform-dev": []
 }
