@@ -1,6 +1,4 @@
 #Relationships
-Every entry has a related_entries field, which is a list of entry relationships. Each relationship has a type, the related entry's type, and the id of the related entry.
-Special relationships may have additional information as well
 *All relationships are bi directional*
 ## List of relationship types
 
@@ -26,7 +24,7 @@ Special relationships may have additional information as well
 |TODO     |TODO            |                   |
 
 ## Location to Location
-*Parent and child coincidently match up to Creature to Creature, but here it refers to Locations ability to nest as a graph*
+*Parent and child coincidentally match up to Creature to Creature, but here it refers to Locations ability to nest as a graph*
 
 *Sibling here refers to the location being connected to in some what another location (EX: two rooms in the same building)*
 

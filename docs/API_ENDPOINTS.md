@@ -1,25 +1,5 @@
 # Endpoints
 
-## Entries
-
-All other endpoints are sub-entry. But this endpoint gets everything as an entry with a set type.
-
-### Available Methods
-
-Without element: GET
-
-With element: GET, PATCH, DELETE
-
-### Fields
-
-* id
-* name
-* appearance
-* notes
-* related_entries
-    * A list of [related entries](API_RELATIONS.md)
-* type (one of creature, player, location, faction, etc)
-
 ## Creatures
 A stat-carrying thing
 
@@ -29,13 +9,14 @@ Without element: GET, POST
 
 With element: GET, PATCH, DELETE
 
-### Fields (Inherited from entries)
+### Fields
 * name
 * appearance
 * notes
-* related_entries
-
-### Fields
+* related_creatures
+* related_items
+* related_factions
+* related_locations
 * type (One of: Aberation, Beast, Celestial, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, Or Undead)
 * race
 * gender
@@ -93,16 +74,15 @@ Without element: GET, POST
 
 With element: GET, PATCH, DELETE
 
-### Fields (Inherited from entries)
+### Fields
 * name
 * appearance
 * notes
-
-### Fields
 * low_value
 * fair_value
 * high_value
 * effects
+* related_creatures
 TODO: Weapons (with attack/damage), and Armor (with AC) OR Equipment
 
 ## Locations
@@ -113,13 +93,12 @@ Without element: GET, POST
 
 With element: GET, PATCH, DELETE
 
-#### Fields (Inherited from entries)
+#### Fields
 * name
 * appearance
 * notes
-
-#### Fields
-N/A
+* related_creatures
+* related_locations
 
 ### Factions
 
@@ -129,13 +108,12 @@ Without element: GET, POST
 
 With element: GET, PATCH, DELETE
 
-#### Fields (Inherited from entries)
+#### Fields
 * name
 * appearance
 * notes
-
-#### Fields
 * purpose
+* related_creatures
 
 ## Players
 
