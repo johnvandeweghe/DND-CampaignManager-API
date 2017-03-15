@@ -28,6 +28,28 @@ class Players
      */
     private $playerName;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Creatures", inversedBy="player")
+     * @ORM\JoinTable(name="players_creatures",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="creature_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $creature;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->creature = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -61,6 +83,40 @@ class Players
     public function getPlayerName()
     {
         return $this->playerName;
+    }
+
+    /**
+     * Add creature
+     *
+     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
+     *
+     * @return Players
+     */
+    public function addCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature)
+    {
+        $this->creature[] = $creature;
+
+        return $this;
+    }
+
+    /**
+     * Remove creature
+     *
+     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
+     */
+    public function removeCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature)
+    {
+        $this->creature->removeElement($creature);
+    }
+
+    /**
+     * Get creature
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCreature()
+    {
+        return $this->creature;
     }
 }
 

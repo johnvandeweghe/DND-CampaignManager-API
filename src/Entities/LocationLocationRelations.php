@@ -15,9 +15,12 @@ class LocationLocationRelations
     /**
      * @var \DNDCampaignManagerAPI\Entities\Locations
      *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Locations")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="location_a", referencedColumnName="entry_id", unique=true)
+     *   @ORM\JoinColumn(name="location_a", referencedColumnName="id", unique=true)
      * })
      */
     private $locationA;
@@ -25,15 +28,21 @@ class LocationLocationRelations
     /**
      * @var \DNDCampaignManagerAPI\Entities\Locations
      *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Locations")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="location_b", referencedColumnName="entry_id", unique=true)
+     *   @ORM\JoinColumn(name="location_b", referencedColumnName="id", unique=true)
      * })
      */
     private $locationB;
 
     /**
      * @var \DNDCampaignManagerAPI\Entities\LocationLocationRelationTypes
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
      *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\LocationLocationRelationTypes")
      * @ORM\JoinColumns({

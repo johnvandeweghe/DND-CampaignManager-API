@@ -13,38 +13,116 @@ use Doctrine\ORM\Mapping as ORM;
 class Locations
 {
     /**
-     * @var \DNDCampaignManagerAPI\Entities\Entries
+     * @var integer
      *
-     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Entries")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="entry_id", referencedColumnName="id", unique=true)
-     * })
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $entry;
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="appearance", type="text", length=65535, nullable=true)
+     */
+    private $appearance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="text", length=65535, nullable=true)
+     */
+    private $notes;
 
 
     /**
-     * Set entry
+     * Get id
      *
-     * @param \DNDCampaignManagerAPI\Entities\Entries $entry
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
      *
      * @return Locations
      */
-    public function setEntry(\DNDCampaignManagerAPI\Entities\Entries $entry = null)
+    public function setName($name)
     {
-        $this->entry = $entry;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get entry
+     * Get name
      *
-     * @return \DNDCampaignManagerAPI\Entities\Entries
+     * @return string
      */
-    public function getEntry()
+    public function getName()
     {
-        return $this->entry;
+        return $this->name;
+    }
+
+    /**
+     * Set appearance
+     *
+     * @param string $appearance
+     *
+     * @return Locations
+     */
+    public function setAppearance($appearance)
+    {
+        $this->appearance = $appearance;
+
+        return $this;
+    }
+
+    /**
+     * Get appearance
+     *
+     * @return string
+     */
+    public function getAppearance()
+    {
+        return $this->appearance;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     *
+     * @return Locations
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }
 

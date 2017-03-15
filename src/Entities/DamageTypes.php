@@ -26,14 +26,14 @@ class DamageTypes
      *
      * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Creatures", mappedBy="damageType")
      */
-    private $creatureEntry;
+    private $creature;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->creatureEntry = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->creature = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -47,37 +47,37 @@ class DamageTypes
     }
 
     /**
-     * Add creatureEntry
+     * Add creature
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creatureEntry
+     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
      *
      * @return DamageTypes
      */
-    public function addCreatureEntry(\DNDCampaignManagerAPI\Entities\Creatures $creatureEntry)
+    public function addCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature)
     {
-        $this->creatureEntry[] = $creatureEntry;
+        $this->creature[] = $creature;
 
         return $this;
     }
 
     /**
-     * Remove creatureEntry
+     * Remove creature
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creatureEntry
+     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
      */
-    public function removeCreatureEntry(\DNDCampaignManagerAPI\Entities\Creatures $creatureEntry)
+    public function removeCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature)
     {
-        $this->creatureEntry->removeElement($creatureEntry);
+        $this->creature->removeElement($creature);
     }
 
     /**
-     * Get creatureEntry
+     * Get creature
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCreatureEntry()
+    public function getCreature()
     {
-        return $this->creatureEntry;
+        return $this->creature;
     }
 }
 

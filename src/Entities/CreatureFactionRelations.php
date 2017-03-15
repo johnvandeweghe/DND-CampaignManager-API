@@ -22,9 +22,12 @@ class CreatureFactionRelations
     /**
      * @var \DNDCampaignManagerAPI\Entities\Creatures
      *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creatures")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="creature_id", referencedColumnName="entry_id", unique=true)
+     *   @ORM\JoinColumn(name="creature_id", referencedColumnName="id", unique=true)
      * })
      */
     private $creature;
@@ -32,15 +35,21 @@ class CreatureFactionRelations
     /**
      * @var \DNDCampaignManagerAPI\Entities\Factions
      *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Factions")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="faction_id", referencedColumnName="entry_id", unique=true)
+     *   @ORM\JoinColumn(name="faction_id", referencedColumnName="id", unique=true)
      * })
      */
     private $faction;
 
     /**
      * @var \DNDCampaignManagerAPI\Entities\CreatureFactionRelationTypes
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
      *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\CreatureFactionRelationTypes")
      * @ORM\JoinColumns({

@@ -31,7 +31,7 @@ class ConfigurationManagerRepository extends ArrayManagerRepository
             'dbname'   => $configuration->getDbDatabase(),
         );
 
-        $config = Setup::createAnnotationMetadataConfiguration($paths);
+        $config = Setup::createAnnotationMetadataConfiguration($paths, false, null, null, false);
 
         $em = EntityManager::create($dbParams, $config);
         $platform = $em->getConnection()->getDatabasePlatform();

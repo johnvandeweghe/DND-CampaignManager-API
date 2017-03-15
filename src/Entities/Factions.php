@@ -13,22 +13,124 @@ use Doctrine\ORM\Mapping as ORM;
 class Factions
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="appearance", type="text", length=65535, nullable=true)
+     */
+    private $appearance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="text", length=65535, nullable=true)
+     */
+    private $notes;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="purpose", type="text", length=65535, nullable=true)
      */
     private $purpose;
 
-    /**
-     * @var \DNDCampaignManagerAPI\Entities\Entries
-     *
-     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Entries")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="entry_id", referencedColumnName="id", unique=true)
-     * })
-     */
-    private $entry;
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Factions
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set appearance
+     *
+     * @param string $appearance
+     *
+     * @return Factions
+     */
+    public function setAppearance($appearance)
+    {
+        $this->appearance = $appearance;
+
+        return $this;
+    }
+
+    /**
+     * Get appearance
+     *
+     * @return string
+     */
+    public function getAppearance()
+    {
+        return $this->appearance;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     *
+     * @return Factions
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
 
     /**
      * Set purpose
@@ -52,30 +154,6 @@ class Factions
     public function getPurpose()
     {
         return $this->purpose;
-    }
-
-    /**
-     * Set entry
-     *
-     * @param \DNDCampaignManagerAPI\Entities\Entries $entry
-     *
-     * @return Factions
-     */
-    public function setEntry(\DNDCampaignManagerAPI\Entities\Entries $entry = null)
-    {
-        $this->entry = $entry;
-
-        return $this;
-    }
-
-    /**
-     * Get entry
-     *
-     * @return \DNDCampaignManagerAPI\Entities\Entries
-     */
-    public function getEntry()
-    {
-        return $this->entry;
     }
 }
 

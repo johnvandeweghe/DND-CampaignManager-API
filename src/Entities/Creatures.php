@@ -7,11 +7,41 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Creatures
  *
- * @ORM\Entity
  * @ORM\Table(name="creatures", indexes={@ORM\Index(name="type", columns={"type"}), @ORM\Index(name="alignment", columns={"alignment"})})
+ * @ORM\Entity
  */
-class Creatures extends Entries
+class Creatures
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="appearance", type="text", length=65535, nullable=true)
+     */
+    private $appearance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="text", length=65535, nullable=true)
+     */
+    private $notes;
+
     /**
      * @var string
      *
@@ -343,10 +373,10 @@ class Creatures extends Entries
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Conditions", inversedBy="creatureEntry")
+     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Conditions", inversedBy="creature")
      * @ORM\JoinTable(name="creature_condition_immunities",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="creature_entry_id", referencedColumnName="entry_id")
+     *     @ORM\JoinColumn(name="creature_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="condition", referencedColumnName="condition")
@@ -358,10 +388,10 @@ class Creatures extends Entries
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\DamageTypes", inversedBy="creatureEntry")
+     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\DamageTypes", inversedBy="creature")
      * @ORM\JoinTable(name="creature_damage_type_modifiers",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="creature_entry_id", referencedColumnName="entry_id")
+     *     @ORM\JoinColumn(name="creature_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="damage_type", referencedColumnName="damage_type")
@@ -371,12 +401,102 @@ class Creatures extends Entries
     private $damageType;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Players", mappedBy="creature")
+     */
+    private $player;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->condition = new \Doctrine\Common\Collections\ArrayCollection();
         $this->damageType = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->player = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Creatures
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set appearance
+     *
+     * @param string $appearance
+     *
+     * @return Creatures
+     */
+    public function setAppearance($appearance)
+    {
+        $this->appearance = $appearance;
+
+        return $this;
+    }
+
+    /**
+     * Get appearance
+     *
+     * @return string
+     */
+    public function getAppearance()
+    {
+        return $this->appearance;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     *
+     * @return Creatures
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 
     /**
@@ -1549,6 +1669,40 @@ class Creatures extends Entries
     public function getDamageType()
     {
         return $this->damageType;
+    }
+
+    /**
+     * Add player
+     *
+     * @param \DNDCampaignManagerAPI\Entities\Players $player
+     *
+     * @return Creatures
+     */
+    public function addPlayer(\DNDCampaignManagerAPI\Entities\Players $player)
+    {
+        $this->player[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param \DNDCampaignManagerAPI\Entities\Players $player
+     */
+    public function removePlayer(\DNDCampaignManagerAPI\Entities\Players $player)
+    {
+        $this->player->removeElement($player);
+    }
+
+    /**
+     * Get player
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayer()
+    {
+        return $this->player;
     }
 }
 

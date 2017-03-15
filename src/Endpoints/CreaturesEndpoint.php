@@ -1,6 +1,7 @@
 <?php
 namespace DNDCampaignManagerAPI\Endpoints;
 
+use DNDCampaignManagerAPI\Entities\Creatures;
 use Doctrine\Common\Persistence\ObjectManager;
 use LunixREST\APIRequest\APIRequest;
 use LunixREST\APIResponse\APIResponseData;
@@ -31,8 +32,16 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
      */
     public function getAll(APIRequest $request): APIResponseData
     {
+        /**
+         * @var $allCreatures Creatures[]
+         */
         $allCreatures = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creatures')->findAll();
-        return new APIResponseData($allCreatures);
+
+        return new APIResponseData(array_map(function(Creatures $creature) {
+            return [
+                "name" => $creature->getName()
+            ];
+        }, $allCreatures));
     }
 
     /**

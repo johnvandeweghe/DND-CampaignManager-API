@@ -22,9 +22,12 @@ class CreatureItemRelations
     /**
      * @var \DNDCampaignManagerAPI\Entities\Creatures
      *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creatures")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="creature_id", referencedColumnName="entry_id", unique=true)
+     *   @ORM\JoinColumn(name="creature_id", referencedColumnName="id", unique=true)
      * })
      */
     private $creature;
@@ -32,15 +35,21 @@ class CreatureItemRelations
     /**
      * @var \DNDCampaignManagerAPI\Entities\Items
      *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Items")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="item_id", referencedColumnName="entry_id", unique=true)
+     *   @ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)
      * })
      */
     private $item;
 
     /**
      * @var \DNDCampaignManagerAPI\Entities\CreatureItemRelationTypes
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
      *
      * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\CreatureItemRelationTypes")
      * @ORM\JoinColumns({
