@@ -1,5 +1,5 @@
 # DND-CampaignManager-API
-An api for a Compain Manager for Dungeons and Dragons DMs
+An api for a campain manager for Dungeons and Dragons DMs
 
 ## Feature list (plan)
 * One secret key gives full access
@@ -16,8 +16,6 @@ An api for a Compain Manager for Dungeons and Dragons DMs
 * Links between above (playes belong to factions, live in towns, etc)
 * Ability to generate quick Items/NPCs/Shops
 * A quick search that searches everything
-
-*Note: This project uses Doctrine 2 ORM, but wants to explicitly state that it's not meant to exemplify perfect conventions with Doctrine Entity implementation. The goal is merely to show that Doctrine Entities can be used with LunixREST.*
 
 ## [Endpoints](docs/API_ENDPOINTS.md)
 
