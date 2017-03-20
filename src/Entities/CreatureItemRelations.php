@@ -20,12 +20,12 @@ class CreatureItemRelations
     private $quantity;
 
     /**
-     * @var \DNDCampaignManagerAPI\Entities\Creatures
+     * @var \DNDCampaignManagerAPI\Entities\Creature
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
      *
-     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creatures")
+     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creature")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="creature_id", referencedColumnName="id", unique=true)
      * })
@@ -86,11 +86,11 @@ class CreatureItemRelations
     /**
      * Set creature
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
+     * @param \DNDCampaignManagerAPI\Entities\Creature $creature
      *
      * @return CreatureItemRelations
      */
-    public function setCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature = null)
+    public function setCreature(\DNDCampaignManagerAPI\Entities\Creature $creature = null)
     {
         $this->creature = $creature;
 
@@ -100,7 +100,7 @@ class CreatureItemRelations
     /**
      * Get creature
      *
-     * @return \DNDCampaignManagerAPI\Entities\Creatures
+     * @return \DNDCampaignManagerAPI\Entities\Creature
      */
     public function getCreature()
     {

@@ -1,5 +1,5 @@
 <?php
-namespace DNDCampaignManagerAPI;
+namespace DNDCampaignManagerAPI\Endpoints;
 
 use DNDCampaignManagerAPI\Endpoints\CreaturesEndpoint;
 use Doctrine\Common\Persistence\ManagerRegistry;

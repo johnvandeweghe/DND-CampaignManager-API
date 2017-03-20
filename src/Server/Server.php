@@ -1,7 +1,7 @@
 <?php
 namespace DNDCampaignManagerAPI\Server;
 
-use DNDCampaignManagerAPI\EndpointFactory;
+use DNDCampaignManagerAPI\Endpoints\EndpointFactory;
 use LunixREST\AccessControl\OneKeyAccessControl;
 use LunixREST\APIResponse\RegisteredResponseFactory;
 use LunixREST\Server\GenericRouter;

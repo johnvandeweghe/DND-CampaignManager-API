@@ -13,12 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class CreatureCreatureRelations
 {
     /**
-     * @var \DNDCampaignManagerAPI\Entities\Creatures
+     * @var \DNDCampaignManagerAPI\Entities\Creature
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
      *
-     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creatures")
+     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creature")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="creature_a", referencedColumnName="id", unique=true)
      * })
@@ -26,12 +26,12 @@ class CreatureCreatureRelations
     private $creatureA;
 
     /**
-     * @var \DNDCampaignManagerAPI\Entities\Creatures
+     * @var \DNDCampaignManagerAPI\Entities\Creature
      *
      * @ORM\Id
      * @ORM\Column(type="integer")
      *
-     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creatures")
+     * @ORM\OneToOne(targetEntity="DNDCampaignManagerAPI\Entities\Creature")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="creature_b", referencedColumnName="id", unique=true)
      * })
@@ -55,11 +55,11 @@ class CreatureCreatureRelations
     /**
      * Set creatureA
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creatureA
+     * @param \DNDCampaignManagerAPI\Entities\Creature $creatureA
      *
      * @return CreatureCreatureRelations
      */
-    public function setCreatureA(\DNDCampaignManagerAPI\Entities\Creatures $creatureA = null)
+    public function setCreatureA(\DNDCampaignManagerAPI\Entities\Creature $creatureA = null)
     {
         $this->creatureA = $creatureA;
 
@@ -69,7 +69,7 @@ class CreatureCreatureRelations
     /**
      * Get creatureA
      *
-     * @return \DNDCampaignManagerAPI\Entities\Creatures
+     * @return \DNDCampaignManagerAPI\Entities\Creature
      */
     public function getCreatureA()
     {
@@ -79,11 +79,11 @@ class CreatureCreatureRelations
     /**
      * Set creatureB
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creatureB
+     * @param \DNDCampaignManagerAPI\Entities\Creature $creatureB
      *
      * @return CreatureCreatureRelations
      */
-    public function setCreatureB(\DNDCampaignManagerAPI\Entities\Creatures $creatureB = null)
+    public function setCreatureB(\DNDCampaignManagerAPI\Entities\Creature $creatureB = null)
     {
         $this->creatureB = $creatureB;
 
@@ -93,7 +93,7 @@ class CreatureCreatureRelations
     /**
      * Get creatureB
      *
-     * @return \DNDCampaignManagerAPI\Entities\Creatures
+     * @return \DNDCampaignManagerAPI\Entities\Creature
      */
     public function getCreatureB()
     {

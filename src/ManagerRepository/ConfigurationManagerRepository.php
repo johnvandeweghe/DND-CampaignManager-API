@@ -1,7 +1,7 @@
 <?php
 namespace DNDCampaignManagerAPI\ManagerRepository;
 
-use DNDCampaignManagerAPI\Configuration;
+use DNDCampaignManagerAPI\Configuration\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 

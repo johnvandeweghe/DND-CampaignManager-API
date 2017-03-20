@@ -1,7 +1,9 @@
 <?php
 namespace DNDCampaignManagerAPI\Endpoints;
 
-use DNDCampaignManagerAPI\Entities\Creatures;
+use DNDCampaignManagerAPI\Entities\Creature;
+use DNDCampaignManagerAPI\ResponseData\CreatureResponseData;
+use DNDCampaignManagerAPI\ResponseData\CreaturesResponseData;
 use Doctrine\Common\Persistence\ObjectManager;
 use LunixREST\APIRequest\APIRequest;
 use LunixREST\APIResponse\APIResponseData;
@@ -22,7 +24,12 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
      */
     public function get(APIRequest $request): APIResponseData
     {
-        // TODO: Implement get() method.
+        /**
+         * @var $allCreatures Creature
+         */
+        $creature = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->find($request->getElement());
+
+        return new CreatureResponseData($creature);
     }
 
     /**
@@ -33,14 +40,12 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
     public function getAll(APIRequest $request): APIResponseData
     {
         /**
-         * @var $allCreatures Creatures[]
+         * @var $allCreatures Creature[]
          */
-        $allCreatures = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creatures')->findAll();
+        $allCreatures = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->findAll();
 
-        return new APIResponseData(array_map(function(Creatures $creature) {
-            return [
-                "name" => $creature->getName()
-            ];
+        return new CreaturesResponseData(array_map(function(Creature $creature){
+            return new CreatureResponseData($creature);
         }, $allCreatures));
     }
 

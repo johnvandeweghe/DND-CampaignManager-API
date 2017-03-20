@@ -24,7 +24,7 @@ class DamageTypes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Creatures", mappedBy="damageType")
+     * @ORM\ManyToMany(targetEntity="DNDCampaignManagerAPI\Entities\Creature", mappedBy="damageType")
      */
     private $creature;
 
@@ -49,11 +49,11 @@ class DamageTypes
     /**
      * Add creature
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
+     * @param \DNDCampaignManagerAPI\Entities\Creature $creature
      *
      * @return DamageTypes
      */
-    public function addCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature)
+    public function addCreature(\DNDCampaignManagerAPI\Entities\Creature $creature)
     {
         $this->creature[] = $creature;
 
@@ -63,9 +63,9 @@ class DamageTypes
     /**
      * Remove creature
      *
-     * @param \DNDCampaignManagerAPI\Entities\Creatures $creature
+     * @param \DNDCampaignManagerAPI\Entities\Creature $creature
      */
-    public function removeCreature(\DNDCampaignManagerAPI\Entities\Creatures $creature)
+    public function removeCreature(\DNDCampaignManagerAPI\Entities\Creature $creature)
     {
         $this->creature->removeElement($creature);
     }

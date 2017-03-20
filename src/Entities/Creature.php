@@ -5,12 +5,12 @@ namespace DNDCampaignManagerAPI\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Creatures
+ * Creature
  *
  * @ORM\Table(name="creatures", indexes={@ORM\Index(name="type", columns={"type"}), @ORM\Index(name="alignment", columns={"alignment"})})
  * @ORM\Entity
  */
-class Creatures
+class Creature
 {
     /**
      * @var integer
@@ -432,7 +432,7 @@ class Creatures
      *
      * @param string $name
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setName($name)
     {
@@ -456,7 +456,7 @@ class Creatures
      *
      * @param string $appearance
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setAppearance($appearance)
     {
@@ -480,7 +480,7 @@ class Creatures
      *
      * @param string $notes
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setNotes($notes)
     {
@@ -504,7 +504,7 @@ class Creatures
      *
      * @param string $race
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setRace($race)
     {
@@ -528,7 +528,7 @@ class Creatures
      *
      * @param string $gender
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setGender($gender)
     {
@@ -552,7 +552,7 @@ class Creatures
      *
      * @param integer $maxHitPoints
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setMaxHitPoints($maxHitPoints)
     {
@@ -576,7 +576,7 @@ class Creatures
      *
      * @param string $averageMaxHitPoints
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setAverageMaxHitPoints($averageMaxHitPoints)
     {
@@ -600,7 +600,7 @@ class Creatures
      *
      * @param integer $constitution
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setConstitution($constitution)
     {
@@ -624,7 +624,7 @@ class Creatures
      *
      * @param integer $strength
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setStrength($strength)
     {
@@ -648,7 +648,7 @@ class Creatures
      *
      * @param integer $dexterity
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setDexterity($dexterity)
     {
@@ -672,7 +672,7 @@ class Creatures
      *
      * @param integer $intelligence
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setIntelligence($intelligence)
     {
@@ -696,7 +696,7 @@ class Creatures
      *
      * @param integer $wisdom
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setWisdom($wisdom)
     {
@@ -720,7 +720,7 @@ class Creatures
      *
      * @param integer $charisma
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setCharisma($charisma)
     {
@@ -744,7 +744,7 @@ class Creatures
      *
      * @param integer $proficiencyBonus
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setProficiencyBonus($proficiencyBonus)
     {
@@ -768,7 +768,7 @@ class Creatures
      *
      * @param string $size
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setSize($size)
     {
@@ -792,7 +792,7 @@ class Creatures
      *
      * @param integer $baseSpeed
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setBaseSpeed($baseSpeed)
     {
@@ -816,7 +816,7 @@ class Creatures
      *
      * @param integer $burrowSpeed
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setBurrowSpeed($burrowSpeed)
     {
@@ -840,7 +840,7 @@ class Creatures
      *
      * @param integer $climbSpeed
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setClimbSpeed($climbSpeed)
     {
@@ -864,7 +864,7 @@ class Creatures
      *
      * @param integer $flySpeed
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setFlySpeed($flySpeed)
     {
@@ -888,7 +888,7 @@ class Creatures
      *
      * @param integer $swimSpeed
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setSwimSpeed($swimSpeed)
     {
@@ -912,7 +912,7 @@ class Creatures
      *
      * @param string $languages
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setLanguages($languages)
     {
@@ -936,7 +936,7 @@ class Creatures
      *
      * @param string $senses
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setSenses($senses)
     {
@@ -960,7 +960,7 @@ class Creatures
      *
      * @param integer $constitutionSavingThrowModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setConstitutionSavingThrowModifier($constitutionSavingThrowModifier)
     {
@@ -984,7 +984,7 @@ class Creatures
      *
      * @param integer $strengthSavingThrowModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setStrengthSavingThrowModifier($strengthSavingThrowModifier)
     {
@@ -1008,7 +1008,7 @@ class Creatures
      *
      * @param integer $dexteritySavingThrowModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setDexteritySavingThrowModifier($dexteritySavingThrowModifier)
     {
@@ -1032,7 +1032,7 @@ class Creatures
      *
      * @param integer $intelligenceSavingThrowModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setIntelligenceSavingThrowModifier($intelligenceSavingThrowModifier)
     {
@@ -1056,7 +1056,7 @@ class Creatures
      *
      * @param integer $wisdomSavingThrowModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setWisdomSavingThrowModifier($wisdomSavingThrowModifier)
     {
@@ -1080,7 +1080,7 @@ class Creatures
      *
      * @param integer $charismaSavingThrowModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setCharismaSavingThrowModifier($charismaSavingThrowModifier)
     {
@@ -1104,7 +1104,7 @@ class Creatures
      *
      * @param integer $acrobaticsProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setAcrobaticsProficiencyModifier($acrobaticsProficiencyModifier)
     {
@@ -1128,7 +1128,7 @@ class Creatures
      *
      * @param integer $arcanaProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setArcanaProficiencyModifier($arcanaProficiencyModifier)
     {
@@ -1152,7 +1152,7 @@ class Creatures
      *
      * @param integer $athleticsProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setAthleticsProficiencyModifier($athleticsProficiencyModifier)
     {
@@ -1176,7 +1176,7 @@ class Creatures
      *
      * @param integer $deceptionProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setDeceptionProficiencyModifier($deceptionProficiencyModifier)
     {
@@ -1200,7 +1200,7 @@ class Creatures
      *
      * @param integer $historyProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setHistoryProficiencyModifier($historyProficiencyModifier)
     {
@@ -1224,7 +1224,7 @@ class Creatures
      *
      * @param integer $insightProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setInsightProficiencyModifier($insightProficiencyModifier)
     {
@@ -1248,7 +1248,7 @@ class Creatures
      *
      * @param integer $intimidationProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setIntimidationProficiencyModifier($intimidationProficiencyModifier)
     {
@@ -1272,7 +1272,7 @@ class Creatures
      *
      * @param integer $investigationProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setInvestigationProficiencyModifier($investigationProficiencyModifier)
     {
@@ -1296,7 +1296,7 @@ class Creatures
      *
      * @param integer $medicineProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setMedicineProficiencyModifier($medicineProficiencyModifier)
     {
@@ -1320,7 +1320,7 @@ class Creatures
      *
      * @param integer $natureProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setNatureProficiencyModifier($natureProficiencyModifier)
     {
@@ -1344,7 +1344,7 @@ class Creatures
      *
      * @param integer $perceptionProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setPerceptionProficiencyModifier($perceptionProficiencyModifier)
     {
@@ -1368,7 +1368,7 @@ class Creatures
      *
      * @param integer $performanceProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setPerformanceProficiencyModifier($performanceProficiencyModifier)
     {
@@ -1392,7 +1392,7 @@ class Creatures
      *
      * @param integer $persuasionProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setPersuasionProficiencyModifier($persuasionProficiencyModifier)
     {
@@ -1416,7 +1416,7 @@ class Creatures
      *
      * @param integer $religionProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setReligionProficiencyModifier($religionProficiencyModifier)
     {
@@ -1440,7 +1440,7 @@ class Creatures
      *
      * @param integer $slightOfHandProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setSlightOfHandProficiencyModifier($slightOfHandProficiencyModifier)
     {
@@ -1464,7 +1464,7 @@ class Creatures
      *
      * @param integer $stealthProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setStealthProficiencyModifier($stealthProficiencyModifier)
     {
@@ -1488,7 +1488,7 @@ class Creatures
      *
      * @param integer $survivalProficiencyModifier
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setSurvivalProficiencyModifier($survivalProficiencyModifier)
     {
@@ -1512,7 +1512,7 @@ class Creatures
      *
      * @param string $specialTraits
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setSpecialTraits($specialTraits)
     {
@@ -1536,7 +1536,7 @@ class Creatures
      *
      * @param string $classLevels
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setClassLevels($classLevels)
     {
@@ -1560,7 +1560,7 @@ class Creatures
      *
      * @param \DNDCampaignManagerAPI\Entities\CreatureTypes $type
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setType(\DNDCampaignManagerAPI\Entities\CreatureTypes $type = null)
     {
@@ -1584,7 +1584,7 @@ class Creatures
      *
      * @param \DNDCampaignManagerAPI\Entities\Alignments $alignment
      *
-     * @return Creatures
+     * @return Creature
      */
     public function setAlignment(\DNDCampaignManagerAPI\Entities\Alignments $alignment = null)
     {
@@ -1608,7 +1608,7 @@ class Creatures
      *
      * @param \DNDCampaignManagerAPI\Entities\Conditions $condition
      *
-     * @return Creatures
+     * @return Creature
      */
     public function addCondition(\DNDCampaignManagerAPI\Entities\Conditions $condition)
     {
@@ -1642,7 +1642,7 @@ class Creatures
      *
      * @param \DNDCampaignManagerAPI\Entities\DamageTypes $damageType
      *
-     * @return Creatures
+     * @return Creature
      */
     public function addDamageType(\DNDCampaignManagerAPI\Entities\DamageTypes $damageType)
     {
@@ -1676,7 +1676,7 @@ class Creatures
      *
      * @param \DNDCampaignManagerAPI\Entities\Players $player
      *
-     * @return Creatures
+     * @return Creature
      */
     public function addPlayer(\DNDCampaignManagerAPI\Entities\Players $player)
     {
