@@ -1,7 +1,7 @@
 <?php
 require "vendor/autoload.php";
 
-use DNDCampaignManagerAPI\ManagerRepository\ConfigurationManagerRepository;
+use DNDCampaignManagerAPI\ManagerRegistry\ConfigurationManagerRegistry;
 
 try {
     $configuration = new \DNDCampaignManagerAPI\Configuration\Configuration("config.ini");
@@ -17,7 +17,7 @@ $logger = new \Monolog\Logger("index", [
     new \Monolog\Handler\StreamHandler(fopen("php://stderr", 'w'))
 ]);
 
-$managerRepository = new ConfigurationManagerRepository($configuration);
+$managerRepository = new ConfigurationManagerRegistry($configuration);
 $endpointFactory = new \DNDCampaignManagerAPI\Endpoints\EndpointFactory($managerRepository, $logger);
 $server = new \DNDCampaignManagerAPI\Server\Server($configuration->getApiKey(), $endpointFactory);
 $httpServer = new \DNDCampaignManagerAPI\Server\HTTPServer($server, $logger);

@@ -1,11 +1,12 @@
 <?php
-namespace DNDCampaignManagerAPI\ManagerRepository;
+namespace DNDCampaignManagerAPI\ManagerRegistry;
 
 use DNDCampaignManagerAPI\Configuration\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use LunixRESTBasics\ManagerRegistry\ArrayManagerRegistry;
 
-class ConfigurationManagerRepository extends ArrayManagerRepository
+class ConfigurationManagerRegistry extends ArrayManagerRegistry
 {
 
     public function __construct(Configuration $configuration)

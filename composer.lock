@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "68b5e2b2bed8677f437660844c532756",
+    "content-hash": "3cb23b8e3fd2a643c5afd43fb86c310d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -717,16 +717,16 @@
         },
         {
             "name": "johnvandeweghe/lunixrest-basics",
-            "version": "v0.2.6",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST-Basics.git",
-                "reference": "99b5e1bc3a5b6c476d8ae27eaf1f090c4f8f1fa7"
+                "reference": "aea9af1fd97f0995d9014fc40585f52d44509ae6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST-Basics/zipball/99b5e1bc3a5b6c476d8ae27eaf1f090c4f8f1fa7",
-                "reference": "99b5e1bc3a5b6c476d8ae27eaf1f090c4f8f1fa7",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST-Basics/zipball/aea9af1fd97f0995d9014fc40585f52d44509ae6",
+                "reference": "aea9af1fd97f0995d9014fc40585f52d44509ae6",
                 "shasum": ""
             },
             "require": {
@@ -752,7 +752,7 @@
                 }
             ],
             "description": "Basic implementations of LunixREST",
-            "time": "2017-03-26T01:22:13+00:00"
+            "time": "2017-03-26T04:09:30+00:00"
         },
         {
             "name": "monolog/monolog",
