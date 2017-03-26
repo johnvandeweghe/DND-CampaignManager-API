@@ -3,6 +3,7 @@ namespace DNDCampaignManagerAPI\Server;
 
 use LunixREST\Server\Server;
 use LunixRESTBasics\APIRequest\RequestFactory\BasicRequestFactory;
+use LunixRESTBasics\Server\JSONHTTPServer;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -10,7 +11,7 @@ use Psr\Log\LoggerInterface;
  * Class HTTPServer
  * @package DNDCampaignManagerAPI\Server
  */
-class HTTPServer extends \LunixREST\Server\HTTPServer
+class HTTPServer extends JSONHTTPServer
 {
     public function __construct(Server $server, LoggerInterface $logger)
     {

@@ -22,7 +22,7 @@ $endpointFactory = new \DNDCampaignManagerAPI\Endpoints\EndpointFactory($manager
 $server = new \DNDCampaignManagerAPI\Server\Server($configuration->getApiKey(), $endpointFactory);
 $httpServer = new \DNDCampaignManagerAPI\Server\HTTPServer($server, $logger);
 
-$serverRequest = \LunixRESTBasics\parseBodyAsJSON(GuzzleHttp\Psr7\ServerRequest::fromGlobals());
+$serverRequest = GuzzleHttp\Psr7\ServerRequest::fromGlobals();
 
 $response = $httpServer->handleRequest($serverRequest, new GuzzleHttp\Psr7\Response());
 
