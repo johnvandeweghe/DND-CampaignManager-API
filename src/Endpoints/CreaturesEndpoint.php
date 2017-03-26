@@ -56,7 +56,7 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
      */
     public function post(APIRequest $request): APIResponseData
     {
-        // TODO: Implement post() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -66,7 +66,10 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
      */
     public function postAll(APIRequest $request): APIResponseData
     {
-        // TODO: Implement postAll() method.
+        $requestData = $request->getData();
+        //TODO: Build creature Factory to build from $requestData
+        $creature = new Creature();
+        $this->getEntityManager()->persist($creature);
     }
 
     /**
@@ -88,6 +91,27 @@ class CreaturesEndpoint extends ManagerRegistryEndpoint
     {
         throw new UnsupportedMethodException();
     }
+
+    /**
+     * @param APIRequest $request
+     * @return APIResponseData
+     * @throws UnsupportedMethodException
+     */
+    public function patch(APIRequest $request): APIResponseData
+    {
+        throw new UnsupportedMethodException();
+    }
+
+    /**
+     * @param APIRequest $request
+     * @return APIResponseData
+     * @throws UnsupportedMethodException
+     */
+    public function patchAll(APIRequest $request): APIResponseData
+    {
+        throw new UnsupportedMethodException();
+    }
+
 
     /**
      * @param APIRequest $request

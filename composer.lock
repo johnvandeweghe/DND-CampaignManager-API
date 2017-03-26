@@ -673,16 +673,16 @@
         },
         {
             "name": "johnvandeweghe/lunixrest",
-            "version": "v0.8.6",
+            "version": "v0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST.git",
-                "reference": "5eed87d70e1def9c1c1905a78261904fc9d7d39f"
+                "reference": "a1c8bbc6792382b132229ce4057721f35e3e162b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/5eed87d70e1def9c1c1905a78261904fc9d7d39f",
-                "reference": "5eed87d70e1def9c1c1905a78261904fc9d7d39f",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/a1c8bbc6792382b132229ce4057721f35e3e162b",
+                "reference": "a1c8bbc6792382b132229ce4057721f35e3e162b",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +713,7 @@
                 }
             ],
             "description": "A lightweight REST server",
-            "time": "2017-03-16T00:08:33+00:00"
+            "time": "2017-03-26T05:05:59+00:00"
         },
         {
             "name": "johnvandeweghe/lunixrest-basics",
