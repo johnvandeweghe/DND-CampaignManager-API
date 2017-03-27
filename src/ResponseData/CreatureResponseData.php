@@ -36,10 +36,10 @@ class CreatureResponseData extends APIResponseData
             'base_speed' => $creature->getBaseSpeed(),
             'burrow_speed' => $creature->getBurrowSpeed(),
             'climb_speed' => $creature->getClimbSpeed(),
-            'fly_speed' => $creature->getCharisma(),
-            'swim_speed' => $creature->getCharisma(),
-            'languages' => $creature->getCharisma(),
-            'senses' => $creature->getCharisma(),
+            'fly_speed' => $creature->getFlySpeed(),
+            'swim_speed' => $creature->getSwimSpeed(),
+            'languages' => $creature->getLanguages(),
+            'senses' => $creature->getSenses(),
             'constitution_saving_throw_modifier' => $creature->getConstitutionSavingThrowModifier(),
             'strength_saving_throw_modifier' => $creature->getStrengthSavingThrowModifier(),
             'dexterity_saving_throw_modifier' => $creature->getDexteritySavingThrowModifier(),
@@ -65,7 +65,7 @@ class CreatureResponseData extends APIResponseData
             'survival_proficiency_modifier' => $creature->getSurvivalProficiencyModifier(),
             'special_traits' => $creature->getSpecialTraits(),
             'class_levels' => $creature->getClassLevels(),
-            'type' => $creature->getType(),
+            'type' => $creature->getType() ? $creature->getType()->getCreatureType() : null,
             'alignment' => $creature->getAlignment() ? $creature->getAlignment()->getAlignment() : null,
             'conditions' => array_map(function(Conditions $condition){
                 return $condition->getCondition();

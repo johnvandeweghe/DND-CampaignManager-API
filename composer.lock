@@ -673,16 +673,16 @@
         },
         {
             "name": "johnvandeweghe/lunixrest",
-            "version": "v0.8.7",
+            "version": "v0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST.git",
-                "reference": "a1c8bbc6792382b132229ce4057721f35e3e162b"
+                "reference": "1215d593fd0ecdb6322daf04a4f6ac947a1ca913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/a1c8bbc6792382b132229ce4057721f35e3e162b",
-                "reference": "a1c8bbc6792382b132229ce4057721f35e3e162b",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/1215d593fd0ecdb6322daf04a4f6ac947a1ca913",
+                "reference": "1215d593fd0ecdb6322daf04a4f6ac947a1ca913",
                 "shasum": ""
             },
             "require": {
@@ -713,26 +713,26 @@
                 }
             ],
             "description": "A lightweight REST server",
-            "time": "2017-03-26T05:05:59+00:00"
+            "time": "2017-03-27T06:00:33+00:00"
         },
         {
             "name": "johnvandeweghe/lunixrest-basics",
-            "version": "v0.3.0",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST-Basics.git",
-                "reference": "aea9af1fd97f0995d9014fc40585f52d44509ae6"
+                "reference": "26be15b60b2b8e82ce6c7274812adebc9be4cf78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST-Basics/zipball/aea9af1fd97f0995d9014fc40585f52d44509ae6",
-                "reference": "aea9af1fd97f0995d9014fc40585f52d44509ae6",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST-Basics/zipball/26be15b60b2b8e82ce6c7274812adebc9be4cf78",
+                "reference": "26be15b60b2b8e82ce6c7274812adebc9be4cf78",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "v2.7.2",
                 "guzzlehttp/psr7": "^1.3",
-                "johnvandeweghe/lunixrest": "^0.8",
+                "johnvandeweghe/lunixrest": "^0.9",
                 "php": "^7.1"
             },
             "require-dev": {
@@ -752,7 +752,7 @@
                 }
             ],
             "description": "Basic implementations of LunixREST",
-            "time": "2017-03-26T04:09:30+00:00"
+            "time": "2017-03-27T06:05:02+00:00"
         },
         {
             "name": "monolog/monolog",

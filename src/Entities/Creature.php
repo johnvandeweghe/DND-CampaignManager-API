@@ -2,6 +2,7 @@
 
 namespace DNDCampaignManagerAPI\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -1630,6 +1631,20 @@ class Creature
     /**
      * Get condition
      *
+     * @param \DNDCampaignManagerAPI\Entities\Conditions[] $conditions
+     *
+     * @return Creature
+     */
+    public function setCondition($conditions)
+    {
+        $this->condition = new ArrayCollection($conditions);
+
+        return $this;
+    }
+
+    /**
+     * Get condition
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getCondition()
@@ -1659,6 +1674,20 @@ class Creature
     public function removeDamageType(\DNDCampaignManagerAPI\Entities\DamageTypes $damageType)
     {
         $this->damageType->removeElement($damageType);
+    }
+
+    /**
+     * Get condition
+     *
+     * @param \DNDCampaignManagerAPI\Entities\DamageTypes[] $damageTypes
+     *
+     * @return Creature
+     */
+    public function setDamageType($damageTypes)
+    {
+        $this->damageType = new ArrayCollection($damageTypes);
+
+        return $this;
     }
 
     /**
