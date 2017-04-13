@@ -1,9 +1,9 @@
 <?php
 namespace DNDCampaignManagerAPI\Server;
 
+use LunixREST\Server\JSONHTTPServer;
 use LunixREST\Server\Server;
 use LunixRESTBasics\APIRequest\RequestFactory\BasicRequestFactory;
-use LunixRESTBasics\Server\JSONHTTPServer;
 use Psr\Log\LoggerInterface;
 
 /**
