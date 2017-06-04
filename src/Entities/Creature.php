@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="creatures", indexes={@ORM\Index(name="type", columns={"type"}), @ORM\Index(name="alignment", columns={"alignment"})})
  * @ORM\Entity
  */
-class Creature
+class Creature implements \LunixREST\Server\Router\Endpoint\ResourceEndpoint\Resource
 {
     /**
      * @var integer
