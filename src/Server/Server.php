@@ -26,7 +26,7 @@ class Server extends GenericRouterGenericServer
         $responseFactory = new RegisteredResponseFactory([
             'application/json' => new JSONResponseDataSerializer()
         ]);
-        $endpointFactory = new \DNDCampaignManagerAPI\Endpoints\EndpointFactory($configuration, $logger);
+        $endpointFactory = new EndpointFactory($configuration, $logger);
         $router = new GenericRouter($endpointFactory);
 
         parent::__construct($accessControl, $throttle, $responseFactory, $router);

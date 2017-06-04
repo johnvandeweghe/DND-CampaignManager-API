@@ -1,14 +1,13 @@
 <?php
-namespace DNDCampaignManagerAPI\Endpoints;
+namespace DNDCampaignManagerAPI\Server\Endpoints;
 
 use DNDCampaignManagerAPI\Entities\Creature;
 use DNDCampaignManagerAPI\EntityFactories\CreatureFactory;
-use DNDCampaignManagerAPI\ResponseData\CreatureResponseData;
-use DNDCampaignManagerAPI\ResponseData\CreaturesResponseData;
 use DNDCampaignManagerAPI\Server\ResourceParameterFactories\CreaturesParametersFactory;
 use DNDCampaignManagerAPI\Server\ResourceParameters\CreatureParameters;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\ORMException;
 use LunixREST\Server\Router\Endpoint\Exceptions\ElementConflictException;
 use LunixREST\Server\Router\Endpoint\Exceptions\ElementNotFoundException;
 use LunixREST\Server\Router\Endpoint\Exceptions\EndpointExecutionException;
@@ -17,10 +16,10 @@ use LunixREST\Server\Router\Endpoint\Exceptions\UnsupportedMethodException;
 use LunixREST\Server\Router\Endpoint\ResourceEndpoint;
 use LunixREST\Server\Router\Endpoint\ResourceEndpoint\ResourceAPIResponseDataFactory;
 use LunixREST\Server\Router\Endpoint\ResourceEndpoint\ResourceParameters;
-use LunixREST\Server\Router\Endpoint\ResourceEndpoint\ResourceParametersFactory;
 use LunixRESTBasics\Endpoint\ManagerRegistryAwareTrait;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
+use LunixREST\Server\Router\Endpoint\ResourceEndpoint\Resource;
 
 class CreaturesEndpoint extends ResourceEndpoint
 {
@@ -44,161 +43,6 @@ class CreaturesEndpoint extends ResourceEndpoint
         return $this->managerRegistry->getManager();
     }
 
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws InvalidRequestException
-     */
-    public function getAll(APIRequest $request): APIResponseData
-    {
-        /**
-         * @var $allCreatures Creature[]
-         */
-        $allCreatures = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->findAll();
-
-        return new CreaturesResponseData(array_map(function(Creature $creature){
-            return new CreatureResponseData($creature);
-        }, $allCreatures));
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws ElementNotFoundException
-     * @throws InvalidRequestException
-     */
-    public function post(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws InvalidRequestException
-     */
-    public function postAll(APIRequest $request): APIResponseData
-    {
-        $creatureFactory = new CreatureFactory();
-        $creature = $creatureFactory->create($request->getData());
-
-        $this->getEntityManager()->persist($creature);
-
-        $this->getEntityManager()->flush();
-
-        return new CreatureResponseData($creature);
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws ElementNotFoundException
-     * @throws InvalidRequestException
-     */
-    public function put(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws InvalidRequestException
-     */
-    public function putAll(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws ElementNotFoundException
-     * @throws InvalidRequestException
-     */
-    public function patch(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws InvalidRequestException
-     */
-    public function patchAll(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws ElementNotFoundException
-     * @throws InvalidRequestException
-     */
-    public function options(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws InvalidRequestException
-     */
-    public function optionsAll(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws ElementNotFoundException
-     * @throws InvalidRequestException
-     */
-    public function delete(APIRequest $request): APIResponseData
-    {
-        /**
-         * @var $allCreatures Creature
-         */
-        $creature = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->find($request->getElement());
-
-        if(!$creature) {
-            throw new ElementNotFoundException("Couldn't find a creature with ID=" . $request->getElement());
-        }
-
-        $this->getEntityManager()->remove($creature);
-
-        $this->getEntityManager()->flush();
-
-        return new CreatureResponseData($creature);
-    }
-
-    /**
-     * @param APIRequest $request
-     * @return APIResponseData
-     * @throws UnsupportedMethodException
-     * @throws InvalidRequestException
-     */
-    public function deleteAll(APIRequest $request): APIResponseData
-    {
-        throw new UnsupportedMethodException();
-    }
-
     /**
      * @param ResourceParameters $parameters
      * @return Resource
@@ -210,7 +54,18 @@ class CreaturesEndpoint extends ResourceEndpoint
     protected function getResource(ResourceParameters $parameters): Resource
     {
         /** @var CreatureParameters $parameters */
-        return $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->find($parameters->getId());
+        $creatureId = $parameters->getId();
+        if(!$creatureId) {
+            //This should be unreachable, as this is only routed when an element is provided.
+            throw new InvalidRequestException("Unable to lookup creature without ID");
+        }
+
+        $creature = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->find($creatureId);
+        if(!$creature) {
+            throw new ElementNotFoundException("Unable to find specified creature");
+        }
+
+        return $creature;
     }
 
     /**
@@ -223,7 +78,12 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function getResources(ResourceParameters $parameters): array
     {
-        // TODO: Implement getResources() method.
+        /**
+         * @var $allCreatures Creature[]
+         */
+        $allCreatures = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->findAll();
+
+        return $allCreatures;
     }
 
     /**
@@ -237,7 +97,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function postResource(ResourceParameters $parameters): Resource
     {
-        // TODO: Implement postResource() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -250,7 +110,19 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function postResources(ResourceParameters $parameters): Resource
     {
-        // TODO: Implement postResources() method.
+        /** @var CreatureParameters $parameters */
+        $creatureFactory = new CreatureFactory();
+        $creature = $creatureFactory->create($parameters);
+
+        $this->getEntityManager()->persist($creature);
+
+        try {
+            $this->getEntityManager()->flush();
+        } catch (ORMException $exception) {
+            throw new EndpointExecutionException($exception->getMessage());
+        }
+
+        return $creature;
     }
 
     /**
@@ -264,7 +136,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function putResource(ResourceParameters $parameters): Resource
     {
-        // TODO: Implement putResource() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -277,7 +149,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function putResources(array $parameters): array
     {
-        // TODO: Implement putResources() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -291,7 +163,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function patchResource(ResourceParameters $parameters): Resource
     {
-        // TODO: Implement patchResource() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -305,7 +177,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function patchResources(array $parameters): array
     {
-        // TODO: Implement patchResources() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -317,7 +189,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function optionsResource(ResourceParameters $parameters): Resource
     {
-        // TODO: Implement optionsResource() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -329,7 +201,7 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function optionsResources(array $parameters): array
     {
-        // TODO: Implement optionsResources() method.
+        throw new UnsupportedMethodException();
     }
 
     /**
@@ -342,7 +214,28 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function deleteResource(ResourceParameters $parameters): ?Resource
     {
-        // TODO: Implement deleteResource() method.
+        /** @var CreatureParameters $parameters */
+        $creatureId = $parameters->getId();
+        if(!$creatureId) {
+            //This should be unreachable, as this is only routed when an element is provided.
+            throw new InvalidRequestException("Unable to delete creature without ID");
+        }
+
+        $creature = $this->getEntityManager()->getRepository('\DNDCampaignManagerAPI\Entities\Creature')->find($creatureId);
+
+        if(!$creature) {
+            throw new ElementNotFoundException("Couldn't find a creature with ID=" . $creatureId);
+        }
+
+        $this->getEntityManager()->remove($creature);
+
+        try {
+            $this->getEntityManager()->flush();
+        } catch(ORMException $exception) {
+            throw new EndpointExecutionException($exception->getMessage());
+        }
+
+        return $creature;
     }
 
     /**
@@ -355,6 +248,6 @@ class CreaturesEndpoint extends ResourceEndpoint
      */
     protected function deleteResources(ResourceParameters $parameters): ?array
     {
-        // TODO: Implement deleteResources() method.
+        throw new UnsupportedMethodException();
     }
 }

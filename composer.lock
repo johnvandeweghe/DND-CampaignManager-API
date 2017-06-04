@@ -673,16 +673,16 @@
         },
         {
             "name": "johnvandeweghe/lunixrest",
-            "version": "v3.1.0",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST.git",
-                "reference": "beb3fde7c5e863d4d539f4360eea6b295677536e"
+                "reference": "91a3d1fce8d9e329a019db2798bbade7e3f91c86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/beb3fde7c5e863d4d539f4360eea6b295677536e",
-                "reference": "beb3fde7c5e863d4d539f4360eea6b295677536e",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST/zipball/91a3d1fce8d9e329a019db2798bbade7e3f91c86",
+                "reference": "91a3d1fce8d9e329a019db2798bbade7e3f91c86",
                 "shasum": ""
             },
             "require": {
@@ -713,20 +713,20 @@
                 }
             ],
             "description": "A lightweight REST server",
-            "time": "2017-05-29T22:58:31+00:00"
+            "time": "2017-06-04T06:37:19+00:00"
         },
         {
             "name": "johnvandeweghe/lunixrest-basics",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnvandeweghe/LunixREST-Basics.git",
-                "reference": "f595a52338c56e1cd736ea521ecfc402962f9d1e"
+                "reference": "48de4764acfaf29774872775c1fc9093966aa0c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST-Basics/zipball/f595a52338c56e1cd736ea521ecfc402962f9d1e",
-                "reference": "f595a52338c56e1cd736ea521ecfc402962f9d1e",
+                "url": "https://api.github.com/repos/johnvandeweghe/LunixREST-Basics/zipball/48de4764acfaf29774872775c1fc9093966aa0c3",
+                "reference": "48de4764acfaf29774872775c1fc9093966aa0c3",
                 "shasum": ""
             },
             "require": {
@@ -752,7 +752,7 @@
                 }
             ],
             "description": "Basic implementations of LunixREST",
-            "time": "2017-05-29T23:04:47+00:00"
+            "time": "2017-06-04T06:52:13+00:00"
         },
         {
             "name": "monolog/monolog",

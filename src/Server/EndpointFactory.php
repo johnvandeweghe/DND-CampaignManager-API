@@ -1,16 +1,18 @@
 <?php
-namespace DNDCampaignManagerAPI\Endpoints;
+namespace DNDCampaignManagerAPI\Server;
 
 use DNDCampaignManagerAPI\Configuration\Configuration;
 use DNDCampaignManagerAPI\ManagerRegistry\ConfigurationManagerRegistry;
-use LunixREST\Server\Router\Endpoint\Endpoint;
-use LunixREST\Server\Router\EndpointFactory\Exceptions\UnableToCreateEndpointException;
+use DNDCampaignManagerAPI\Server\Endpoints\CreaturesEndpoint;
+use DNDCampaignManagerAPI\Server\ResourceAPIResponseDataFactories\CreatureAPIResponseDataFactory;
+use DNDCampaignManagerAPI\Server\ResourceParameterFactories\CreaturesParametersFactory;
 use LunixREST\Server\Router\EndpointFactory\RegisteredEndpointFactory;
-use LunixRESTBasics\Endpoint\ManagerRegistryEndpoint;
+use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 
-class EndpointFactory implements \LunixREST\Server\Router\EndpointFactory\EndpointFactory
+class EndpointFactory extends RegisteredEndpointFactory
 {
+    use LoggerAwareTrait;
     protected $registeredEndpointFactory;
     protected $managerRepository;
 
@@ -22,32 +24,17 @@ class EndpointFactory implements \LunixREST\Server\Router\EndpointFactory\Endpoi
     public function __construct(Configuration $configuration, LoggerInterface $logger)
     {
         $this->managerRepository = new ConfigurationManagerRegistry($configuration);
+        $this->logger = $logger;
 
-        $this->registeredEndpointFactory = new RegisteredEndpointFactory();
-        $this->registeredEndpointFactory->register('creatures', 1, $this->getCreaturesEndpoint());
+        $this->register('creatures', 1, $this->getCreaturesEndpoint());
     }
 
     private function getCreaturesEndpoint(): CreaturesEndpoint {
-        return new CreaturesEndpoint(..., )
-    }
-
-    /**
-     * @param string $version
-     * @return string[]
-     */
-    public function getSupportedEndpoints(string $version): array
-    {
-        return $this->registeredEndpointFactory->getSupportedEndpoints($version);
-    }
-
-    /**
-     * @param string $name
-     * @param string $version
-     * @return Endpoint
-     * @throws UnableToCreateEndpointException
-     */
-    public function getEndpoint(string $name, string $version): Endpoint
-    {
-        return $this->registeredEndpointFactory->getEndpoint($name, $version);
+        return new CreaturesEndpoint(
+            new CreaturesParametersFactory(),
+            new CreatureAPIResponseDataFactory(),
+            $this->logger,
+            $this->managerRepository
+        );
     }
 }
